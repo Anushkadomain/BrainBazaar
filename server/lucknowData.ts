@@ -1,0 +1,141 @@
+import type { LucknowZone, WeatherInfo } from '../src/types';
+
+export const LUCKNOW_ZONES: LucknowZone[] = [
+  {
+    id: 'hazratganj',
+    name: 'Hazratganj',
+    hindiName: 'हजरतगंज',
+    lat: 26.8467,
+    lng: 80.9462,
+    radiusMeters: 650,
+    demoFootfallDaily: 5600,
+    peakHours: '5:00 PM – 9:30 PM',
+    avgTicketInr: 72,
+    competitionLevel: 'High',
+    rentIndex: '₹18,000–₹28,000 / mo',
+    topCategories: ['Chaat & Street Snacks', 'Beverages & Chai', 'Sweets & Desserts'],
+    commercialHubs: ['Janpath Market', 'Sahara Ganj Corridor', 'Ganjing Promenade'],
+    notes: 'Highest evening office-goer and weekend shopper spend; strong UPI adoption (>74%).',
+  },
+  {
+    id: 'aminabad',
+    name: 'Aminabad',
+    hindiName: 'अमीनाबाद',
+    lat: 26.8489,
+    lng: 80.9278,
+    radiusMeters: 620,
+    demoFootfallDaily: 6200,
+    peakHours: '12:30 PM – 8:30 PM',
+    avgTicketInr: 58,
+    competitionLevel: 'High',
+    rentIndex: '₹14,000–₹22,000 / mo',
+    topCategories: ['Chaat & Street Snacks', 'Kulfi & Cold Drinks', 'Kebab & Rolls'],
+    commercialHubs: ['Prakash Kulfi Chauraha', 'Gadbadjhala Lane', 'Mohan Market'],
+    notes: 'Dense heritage retail bazaar with steady afternoon and evening family volume.',
+  },
+  {
+    id: 'chowk',
+    name: 'Chowk',
+    hindiName: 'चौक',
+    lat: 26.8639,
+    lng: 80.9097,
+    radiusMeters: 580,
+    demoFootfallDaily: 5100,
+    peakHours: '7:30 AM – 11:00 AM & 6:00 PM – 10:30 PM',
+    avgTicketInr: 65,
+    competitionLevel: 'Moderate',
+    rentIndex: '₹11,000–₹17,000 / mo',
+    topCategories: ['Morning Breakfast & Chai', 'Kebab & Rolls', 'Traditional Sweets'],
+    commercialHubs: ['Gol Darwaza', 'Akbari Gate', 'Nakkhas Heritage Square'],
+    notes: 'Dual-peak heritage culinary corridor famous for early morning puri-chai and late-night snacks.',
+  },
+  {
+    id: 'aliganj',
+    name: 'Aliganj',
+    hindiName: 'अलीगंज',
+    lat: 26.8932,
+    lng: 80.9416,
+    radiusMeters: 600,
+    demoFootfallDaily: 4150,
+    peakHours: '4:30 PM – 8:30 PM',
+    avgTicketInr: 54,
+    competitionLevel: 'Moderate',
+    rentIndex: '₹9,500–₹15,000 / mo',
+    topCategories: ['Beverages & Chai', 'Momos & Fast Food', 'Chaat & Street Snacks'],
+    commercialHubs: ['Kapoorthala Crossing', 'Purania Chauraha', 'Sector H Market'],
+    notes: 'High student and coaching-hub density around Kapoorthala with repeat weekday chai & snack demand.',
+  },
+  {
+    id: 'indira-nagar',
+    name: 'Indira Nagar',
+    hindiName: 'इंदिरा नगर',
+    lat: 26.8825,
+    lng: 80.9927,
+    radiusMeters: 640,
+    demoFootfallDaily: 4450,
+    peakHours: '5:30 PM – 9:30 PM',
+    avgTicketInr: 62,
+    competitionLevel: 'Low',
+    rentIndex: '₹10,000–₹16,000 / mo',
+    topCategories: ['Chaat & Street Snacks', 'Beverages & Chai', 'Evening Snacks'],
+    commercialHubs: ['Bhootnath Market', 'Munshi Pulia Metro', 'Lekhraj Market'],
+    notes: 'Fast-growing Metro corridor around Bhootnath & Munshi Pulia with lower stall saturation.',
+  },
+  {
+    id: 'gomti-nagar',
+    name: 'Gomti Nagar',
+    hindiName: 'गोमती नगर',
+    lat: 26.8548,
+    lng: 81.0052,
+    radiusMeters: 700,
+    demoFootfallDaily: 5300,
+    peakHours: '5:00 PM – 10:00 PM',
+    avgTicketInr: 84,
+    competitionLevel: 'Moderate',
+    rentIndex: '₹16,000–₹26,000 / mo',
+    topCategories: ['Beverages & Chai', 'Chaat & Street Snacks', 'Rolls & Wraps'],
+    commercialHubs: ['Patrakarpuram Crossing', '1090 Chauraha', 'Vibhuti Khand IT Hub'],
+    notes: 'High average ticket size driven by IT offices and evening youth hangout crowd at 1090 Chauraha.',
+  },
+];
+
+export const FOOD_CATEGORIES = [
+  'Chaat & Street Snacks',
+  'Beverages & Chai',
+  'Sweets & Desserts',
+  'Morning Breakfast & Chai',
+  'Kebab & Rolls',
+  'Kulfi & Cold Drinks',
+];
+
+export function getLucknowWeather(): WeatherInfo {
+  const hour = new Date().getHours();
+  if (hour >= 17 || hour < 6) {
+    return {
+      city: 'Lucknow, UP',
+      condition: 'Cool Evening',
+      tempC: 21,
+      humidityPct: 58,
+      demandSignal: 'Cool dusk air lifts Masala Chai (+24%) and hot Aloo Tikki Chaat (+18%) demand.',
+      updatedAt: new Date().toISOString(),
+    };
+  }
+  if (hour >= 11 && hour < 17) {
+    return {
+      city: 'Lucknow, UP',
+      condition: 'Warm Afternoon',
+      tempC: 29,
+      humidityPct: 46,
+      demandSignal: 'Warm midday favors Kulhad Lassi (+20%) and Pani Puri (+15%); hold heavy fried batches until 5 PM.',
+      updatedAt: new Date().toISOString(),
+    };
+  }
+  return {
+    city: 'Lucknow, UP',
+    condition: 'Clear & Pleasant',
+    tempC: 24,
+    humidityPct: 52,
+    demandSignal: 'Pleasant morning weather supports steady Masala Chai & Bun Maska commuter rush.',
+    updatedAt: new Date().toISOString(),
+  };
+}

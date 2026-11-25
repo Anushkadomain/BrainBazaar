@@ -1,0 +1,6 @@
+{
+  "name": "BrainBazaar",
+  "description": "AI-powered hyperlocal vendor intelligence platform helping Lucknow street food vendors forecast demand, manage smart inventory, reduce food waste, and discover high-footfall zones.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
